@@ -167,7 +167,10 @@ class tictac extends JFrame implements ActionListener
                 player1Turn = true;
             }
         } // button 5
-
+    /** 
+    Don't modify until verified by author
+        *@author Mubeen Patel
+    */
         if(e.getSource()==b6){
             if(player1Turn == true){
                 b6.setText("X");
