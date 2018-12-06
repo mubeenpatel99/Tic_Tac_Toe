@@ -13,7 +13,7 @@ import java.awt.event.*;
 class tictac extends JFrame implements ActionListener
 {
     Container c;
-    JButton b0=new JButton("Play Again.");
+    JButton b0=new JButton("Play Again !");
     JButton b1=new JButton("");
     JButton b2=new JButton("");
     JButton b3=new JButton("");
@@ -41,7 +41,7 @@ class tictac extends JFrame implements ActionListener
         c.setBackground(Color.WHITE);
 
         /* give the position to the buttons */
-        l3.setBounds(100,350,100,25);
+        l3.setBounds(110,350,100,25);
         t1.setBounds(175,50,100,25);
         t2.setBounds(175,75,100,25);
         l1.setBounds(50,50,100,25);
