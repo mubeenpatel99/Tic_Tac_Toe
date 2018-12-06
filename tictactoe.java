@@ -167,10 +167,7 @@ class tictac extends JFrame implements ActionListener
                 player1Turn = true;
             }
         } // button 5
-    /** 
-    Don't modify until verified by author
-        *@author Mubeen Patel
-    */
+
         if(e.getSource()==b6){
             if(player1Turn == true){
                 b6.setText("X");
@@ -226,6 +223,7 @@ class tictac extends JFrame implements ActionListener
         if(e.getSource()==b0)
         {
             clear();
+            enable_button();
         }
     }// end of action performed.
 
@@ -237,6 +235,7 @@ class tictac extends JFrame implements ActionListener
                     player1Won =true;
                     player2Won =false;
                     l3.setText(""+t1.getText()+" Won !");
+                    disable_button();
                 }
             }
         }// end of case 1 of win
@@ -247,6 +246,7 @@ class tictac extends JFrame implements ActionListener
                     player1Won = true;
                     player2Won = false;
                     l3.setText(""+t1.getText()+" Won !");
+                    disable_button();
                 }
             }
         }// end of case 2 of win
@@ -257,6 +257,7 @@ class tictac extends JFrame implements ActionListener
                     player1Won = true;
                     player2Won = false;
                     l3.setText(""+t1.getText()+" Won !"); 
+                    disable_button();
                 }
             }
         }// end of case 3 of win
@@ -267,6 +268,7 @@ class tictac extends JFrame implements ActionListener
                     player1Won = true;
                     player2Won = false;
                     l3.setText(""+t1.getText()+" Won !");
+                    disable_button();
                 }
             }
         }// end of case 4 of win
@@ -277,6 +279,7 @@ class tictac extends JFrame implements ActionListener
                     player1Won = true;
                     player2Won = false;
                     l3.setText(""+t1.getText()+" Won !");
+                    disable_button();
                 }
             }
         }// end of case 5 of win
@@ -287,6 +290,7 @@ class tictac extends JFrame implements ActionListener
                     player1Won = true;
                     player2Won = false;
                     l3.setText(""+t1.getText()+" Won !");
+                    disable_button();
                 }
             }
         }// end of case 6 of win
@@ -297,6 +301,7 @@ class tictac extends JFrame implements ActionListener
                     player1Won = true;
                     player2Won = false;
                     l3.setText(""+t1.getText()+" Won !");
+                    disable_button();
                 }
             }
         }// end of case 6 of win
@@ -307,6 +312,7 @@ class tictac extends JFrame implements ActionListener
                     player1Won = true;
                     player2Won = false;
                     l3.setText(""+t1.getText()+" Won !");
+                    disable_button();
                 }
             }
         }// end of case 8 of win
@@ -316,6 +322,7 @@ class tictac extends JFrame implements ActionListener
                     player1Won =true;
                     player2Won =false;
                     l3.setText(""+t2.getText()+" Won !");
+                    disable_button();
                 }
             }
         }// end of case 1 of win
@@ -326,6 +333,7 @@ class tictac extends JFrame implements ActionListener
                     player1Won = false;
                     player2Won = true;
                     l3.setText(""+t2.getText()+" Won !");
+                    disable_button();
                 }
             }
         }// end of case 2 of win
@@ -336,6 +344,7 @@ class tictac extends JFrame implements ActionListener
                     player1Won = false;
                     player2Won = true;
                     l3.setText(""+t2.getText()+" Won !");
+                    disable_button();
                 }
             }
         }// end of case 3 of win
@@ -346,6 +355,7 @@ class tictac extends JFrame implements ActionListener
                     player1Won = false;
                     player2Won = true;
                     l3.setText(""+t2.getText()+" Won !");
+                    disable_button();
                 }
             }
         }// end of case 4 of win
@@ -356,6 +366,7 @@ class tictac extends JFrame implements ActionListener
                     player1Won = false;
                     player2Won = true;
                     l3.setText(""+t2.getText()+" Won !");
+                    disable_button();
                 }
             }
         }// end of case 5 of win
@@ -366,6 +377,7 @@ class tictac extends JFrame implements ActionListener
                     player1Won = false;
                     player2Won = true;
                     l3.setText(""+t2.getText()+" Won !");
+                    disable_button();
                 }
             }
         }// end of case 6 of win
@@ -376,6 +388,7 @@ class tictac extends JFrame implements ActionListener
                     player1Won = false;
                     player2Won = true;
                     l3.setText(""+t2.getText()+" Won !");
+                    disable_button();
                 }
             }
         }// end of case 6 of win
@@ -386,6 +399,7 @@ class tictac extends JFrame implements ActionListener
                     player1Won = false;
                     player2Won = true;
                     l3.setText(""+t2.getText()+" Won !");
+                    disable_button();
                 }
             }
         }// end of case 8 of win
@@ -405,6 +419,32 @@ class tictac extends JFrame implements ActionListener
         t1.setText("");
         t2.setText("");
         l3.setText("");
+    }
+
+    public void disable_button()
+    {
+        b1.setEnabled(false);
+        b2.setEnabled(false);
+        b3.setEnabled(false);
+        b4.setEnabled(false);
+        b5.setEnabled(false);
+        b6.setEnabled(false);
+        b7.setEnabled(false);
+        b8.setEnabled(false);
+        b9.setEnabled(false);
+    }
+
+    public void enable_button()
+    {
+        b1.setEnabled(true);
+        b2.setEnabled(true);
+        b3.setEnabled(true);
+        b4.setEnabled(true);
+        b5.setEnabled(true);
+        b6.setEnabled(true);
+        b7.setEnabled(true);
+        b8.setEnabled(true);
+        b9.setEnabled(true);
     }
 
 }// class tictac
