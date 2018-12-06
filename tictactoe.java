@@ -13,7 +13,7 @@ import java.awt.event.*;
 class tictac extends JFrame implements ActionListener
 {
     Container c;
-    JButton b0=new JButton("Play Again !");
+    JButton b0=new JButton("Play Again.");
     JButton b1=new JButton("");
     JButton b2=new JButton("");
     JButton b3=new JButton("");
@@ -33,6 +33,7 @@ class tictac extends JFrame implements ActionListener
     public static boolean player2Turn = false;
     public static boolean player1Won = false;
     public static boolean player2Won = false;
+    int flag=0;
 
     public tictac()
     {
@@ -41,7 +42,7 @@ class tictac extends JFrame implements ActionListener
         c.setBackground(Color.WHITE);
 
         /* give the position to the buttons */
-        l3.setBounds(110,350,100,25);
+        l3.setBounds(100,350,100,25);
         t1.setBounds(175,50,100,25);
         t2.setBounds(175,75,100,25);
         l1.setBounds(50,50,100,25);
@@ -108,11 +109,15 @@ class tictac extends JFrame implements ActionListener
                 b1.setText("X");
                 checkforwin();
                 player1Turn = false;
+                ++flag; 
+                b1.setEnabled(false);
             }
             else{
                 b1.setText("O");
                 checkforwin();
                 player1Turn = true;
+                ++flag; 
+                b1.setEnabled(false);
             }
         } // button 1
 
@@ -121,11 +126,15 @@ class tictac extends JFrame implements ActionListener
                 b2.setText("X");
                 checkforwin();
                 player1Turn = false;
+                ++flag; 
+                b2.setEnabled(false);
             }
             else{
                 b2.setText("O");
                 checkforwin();
                 player1Turn = true;
+                ++flag; 
+                b2.setEnabled(false);
             }
         } // button 2
 
@@ -134,11 +143,15 @@ class tictac extends JFrame implements ActionListener
                 b3.setText("X");
                 checkforwin();
                 player1Turn = false;
+                ++flag; 
+                b3.setEnabled(false);
             }
             else{
                 b3.setText("O");
                 checkforwin();
                 player1Turn = true;
+                ++flag; 
+                b3.setEnabled(false);
             }
         } // button 3
 
@@ -147,11 +160,15 @@ class tictac extends JFrame implements ActionListener
                 b4.setText("X");
                 checkforwin();
                 player1Turn = false;
+                ++flag; 
+                b4.setEnabled(false);
             }
             else{
                 b4.setText("O");
                 checkforwin();
                 player1Turn = true;
+                ++flag; 
+                b4.setEnabled(false);
             }
         } // button 4
 
@@ -160,11 +177,15 @@ class tictac extends JFrame implements ActionListener
                 b5.setText("X");
                 checkforwin();
                 player1Turn = false;
+                ++flag; 
+                b5.setEnabled(false);
             }
             else{
                 b5.setText("O");
                 checkforwin();
                 player1Turn = true;
+                ++flag; 
+                b5.setEnabled(false);
             }
         } // button 5
 
@@ -173,11 +194,15 @@ class tictac extends JFrame implements ActionListener
                 b6.setText("X");
                 checkforwin();
                 player1Turn = false;
+                ++flag; 
+                b6.setEnabled(false);
             }
             else{
                 b6.setText("O");
                 checkforwin();
                 player1Turn = true;
+                ++flag; 
+                b6.setEnabled(false);
             }
         } // button 6
 
@@ -186,11 +211,15 @@ class tictac extends JFrame implements ActionListener
                 b7.setText("X");
                 checkforwin();
                 player1Turn = false;
+                ++flag; 
+                b7.setEnabled(false);
             }
             else{
                 b7.setText("O");
                 checkforwin();
                 player1Turn = true;
+                ++flag; 
+                b7.setEnabled(false);
             }
         } // button 7
 
@@ -199,11 +228,15 @@ class tictac extends JFrame implements ActionListener
                 b8.setText("X");
                 checkforwin();
                 player1Turn = false;
+                ++flag; 
+                b8.setEnabled(false);
             }
             else{
                 b8.setText("O");
                 checkforwin();
                 player1Turn = true;
+                ++flag; 
+                b8.setEnabled(false);
             }
         } // button 8
 
@@ -212,11 +245,15 @@ class tictac extends JFrame implements ActionListener
                 b9.setText("X");
                 checkforwin();
                 player1Turn = false;
+                ++flag; 
+                b9.setEnabled(false);
             }
             else{
                 b9.setText("O");
                 checkforwin();
                 player1Turn = true;
+                ++flag; 
+                b9.setEnabled(false);
             }
         } // button 9
 
@@ -224,6 +261,16 @@ class tictac extends JFrame implements ActionListener
         {
             clear();
             enable_button();
+            flag=0;
+            player1Turn = true;
+            player2Turn = false;
+            player1Won = false;
+            player2Won = false;
+        }
+
+        if(flag == 9)
+        {
+            draw();
         }
     }// end of action performed.
 
@@ -445,6 +492,12 @@ class tictac extends JFrame implements ActionListener
         b7.setEnabled(true);
         b8.setEnabled(true);
         b9.setEnabled(true);
+    }
+
+    public void draw()
+    {
+        disable_button();
+        l3.setText("****Draw****");
     }
 
 }// class tictac
