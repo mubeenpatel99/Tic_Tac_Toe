@@ -8,7 +8,7 @@ import java.awt.event.*;
 
 /**
     created on December 05 2018 Wed .
- */
+*/
 
 class tictac extends JFrame implements ActionListener
 {
@@ -23,6 +23,7 @@ class tictac extends JFrame implements ActionListener
     JButton b7=new JButton("");
     JButton b8=new JButton("");
     JButton b9=new JButton("");
+    JButton start=new JButton("Start");
     JLabel l1=new JLabel("Player 1 (X): ");
     JLabel l2=new JLabel("Player 2 (O): ");
     JTextField t1=new JTextField();
@@ -42,7 +43,7 @@ class tictac extends JFrame implements ActionListener
         c.setBackground(Color.WHITE);
 
         /* give the position to the buttons */
-        l3.setBounds(100,350,100,25);
+        l3.setBounds(50,110,100,25);
         t1.setBounds(175,50,100,25);
         t2.setBounds(175,75,100,25);
         l1.setBounds(50,50,100,25);
@@ -56,7 +57,8 @@ class tictac extends JFrame implements ActionListener
         b7.setBounds(50,250,50,50);
         b8.setBounds(125,250,50,50);
         b9.setBounds(200,250,50,50);
-        b0.setBounds(100,400,100,50);
+        b0.setBounds(100,315,100,50);
+        start.setBounds(175,110,100,25);
 
         b1.addActionListener(this);
         b2.addActionListener(this);
@@ -68,6 +70,7 @@ class tictac extends JFrame implements ActionListener
         b8.addActionListener(this);
         b9.addActionListener(this);
         b0.addActionListener(this);
+        start.addActionListener(this);
 
         /* adding buttons to container */
 
@@ -84,8 +87,9 @@ class tictac extends JFrame implements ActionListener
         c.add(l2);
         c.add(t1);
         c.add(t2);
-        c.add(l3);
         c.add(b0);
+        c.add(l3);
+        c.add(start);
 
         Cursor cur=new Cursor(Cursor.HAND_CURSOR);
 
@@ -99,6 +103,7 @@ class tictac extends JFrame implements ActionListener
         b8.setCursor(cur);
         b9.setCursor(cur);
         b0.setCursor(cur);
+        start.setCursor(cur);
 
     }// constructor
 
@@ -106,6 +111,7 @@ class tictac extends JFrame implements ActionListener
     {
         if(e.getSource()==b1){
             if(player1Turn == true){
+                l3.setText(""+t2.getText()+"'s Turn !");
                 b1.setText("X");
                 checkforwin();
                 player1Turn = false;
@@ -113,6 +119,7 @@ class tictac extends JFrame implements ActionListener
                 b1.setEnabled(false);
             }
             else{
+                l3.setText(""+t1.getText()+"'s Turn !");
                 b1.setText("O");
                 checkforwin();
                 player1Turn = true;
@@ -123,6 +130,7 @@ class tictac extends JFrame implements ActionListener
 
         if(e.getSource()==b2){
             if(player1Turn == true){
+                l3.setText(""+t2.getText()+"'s Turn !");
                 b2.setText("X");
                 checkforwin();
                 player1Turn = false;
@@ -130,6 +138,7 @@ class tictac extends JFrame implements ActionListener
                 b2.setEnabled(false);
             }
             else{
+                l3.setText(""+t1.getText()+"'s Turn !");
                 b2.setText("O");
                 checkforwin();
                 player1Turn = true;
@@ -140,6 +149,7 @@ class tictac extends JFrame implements ActionListener
 
         if(e.getSource()==b3){
             if(player1Turn == true){
+                l3.setText(""+t2.getText()+"'s Turn !");
                 b3.setText("X");
                 checkforwin();
                 player1Turn = false;
@@ -147,6 +157,7 @@ class tictac extends JFrame implements ActionListener
                 b3.setEnabled(false);
             }
             else{
+                l3.setText(""+t1.getText()+"'s Turn !");
                 b3.setText("O");
                 checkforwin();
                 player1Turn = true;
@@ -157,6 +168,7 @@ class tictac extends JFrame implements ActionListener
 
         if(e.getSource()==b4){
             if(player1Turn == true){
+                l3.setText(""+t2.getText()+"'s Turn !");
                 b4.setText("X");
                 checkforwin();
                 player1Turn = false;
@@ -164,6 +176,7 @@ class tictac extends JFrame implements ActionListener
                 b4.setEnabled(false);
             }
             else{
+                l3.setText(""+t1.getText()+"'s Turn !");
                 b4.setText("O");
                 checkforwin();
                 player1Turn = true;
@@ -174,6 +187,7 @@ class tictac extends JFrame implements ActionListener
 
         if(e.getSource()==b5){
             if(player1Turn == true){
+                l3.setText(""+t2.getText()+"'s Turn !");
                 b5.setText("X");
                 checkforwin();
                 player1Turn = false;
@@ -181,6 +195,7 @@ class tictac extends JFrame implements ActionListener
                 b5.setEnabled(false);
             }
             else{
+                l3.setText(""+t1.getText()+"'s Turn !");
                 b5.setText("O");
                 checkforwin();
                 player1Turn = true;
@@ -191,6 +206,7 @@ class tictac extends JFrame implements ActionListener
 
         if(e.getSource()==b6){
             if(player1Turn == true){
+                l3.setText(""+t2.getText()+"'s Turn !");
                 b6.setText("X");
                 checkforwin();
                 player1Turn = false;
@@ -198,6 +214,7 @@ class tictac extends JFrame implements ActionListener
                 b6.setEnabled(false);
             }
             else{
+                l3.setText(""+t1.getText()+"'s Turn !");
                 b6.setText("O");
                 checkforwin();
                 player1Turn = true;
@@ -208,6 +225,7 @@ class tictac extends JFrame implements ActionListener
 
         if(e.getSource()==b7){
             if(player1Turn == true){
+                l3.setText(""+t2.getText()+"'s Turn !");
                 b7.setText("X");
                 checkforwin();
                 player1Turn = false;
@@ -215,6 +233,7 @@ class tictac extends JFrame implements ActionListener
                 b7.setEnabled(false);
             }
             else{
+                l3.setText(""+t1.getText()+"'s Turn !");
                 b7.setText("O");
                 checkforwin();
                 player1Turn = true;
@@ -225,6 +244,7 @@ class tictac extends JFrame implements ActionListener
 
         if(e.getSource()==b8){
             if(player1Turn == true){
+                l3.setText(""+t2.getText()+"'s Turn !");
                 b8.setText("X");
                 checkforwin();
                 player1Turn = false;
@@ -232,6 +252,7 @@ class tictac extends JFrame implements ActionListener
                 b8.setEnabled(false);
             }
             else{
+                l3.setText(""+t1.getText()+"'s Turn !");
                 b8.setText("O");
                 checkforwin();
                 player1Turn = true;
@@ -242,6 +263,7 @@ class tictac extends JFrame implements ActionListener
 
         if(e.getSource()==b9){
             if(player1Turn == true){
+                l3.setText(""+t2.getText()+"'s Turn !");
                 b9.setText("X");
                 checkforwin();
                 player1Turn = false;
@@ -249,6 +271,7 @@ class tictac extends JFrame implements ActionListener
                 b9.setEnabled(false);
             }
             else{
+                l3.setText(""+t1.getText()+"'s Turn !");
                 b9.setText("O");
                 checkforwin();
                 player1Turn = true;
@@ -266,6 +289,13 @@ class tictac extends JFrame implements ActionListener
             player2Turn = false;
             player1Won = false;
             player2Won = false;
+            l3.setText("");
+        }
+
+        if(e.getSource()==start)
+        {
+            l3.setText(""+t1.getText()+"'s Turn !");
+            start.setEnabled(false);
         }
 
         if(flag == 9)
@@ -492,12 +522,13 @@ class tictac extends JFrame implements ActionListener
         b7.setEnabled(true);
         b8.setEnabled(true);
         b9.setEnabled(true);
+        start.setEnabled(true);
     }
 
     public void draw()
     {
         disable_button();
-        l3.setText("****Draw****");
+        l3.setText("****DRAW****");
     }
 
 }// class tictac
@@ -507,7 +538,7 @@ class tictactoe{
     {
         tictac ob= new tictac();
         ob.setVisible(true);
-		ob.setBounds(100,100,325,500);
+		ob.setBounds(100,100,325,450);
 		ob.setTitle("Tic Tac Toe.exe");
         ob.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }// end of main
