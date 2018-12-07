@@ -9,6 +9,49 @@ import java.awt.event.*;
 /**
     created on December 05 2018 Wed .
 */
+class tictacstartpage extends JFrame implements ActionListener{
+    Container d;
+    JLabel l4=new JLabel("Tic Tac Toe Game.");
+    JLabel l5=new JLabel("-Created by Mubeen Patel.");
+    JButton startbutton=new JButton("Enter the Game.");
+
+    public tictacstartpage()// default constructor
+    {
+
+        l4.setBounds(40,100,300,100);
+        l5.setBounds(100,125,300,100);
+        startbutton.setBounds(75,250,150,50);
+
+        d=this.getContentPane();
+        d.setLayout(null);
+        d.setBackground(Color.WHITE);
+
+        d.add(l4);
+        d.add(l5);
+        d.add(startbutton);
+
+        Cursor curr=new Cursor(Cursor.HAND_CURSOR);
+
+        Font f=new Font("Ariel", Font.BOLD,26);
+        Font fr=new Font("Ariel", Font.ITALIC,14);
+        l4.setFont(f);
+        l5.setFont(fr);
+
+        startbutton.setCursor(curr);
+        startbutton.addActionListener(this);
+    }
+
+    public void actionPerformed(ActionEvent e){
+        if(e.getSource()==startbutton)
+        {
+            tictac ob = new tictac();
+            ob.setVisible(true);
+            ob.setBounds(100,100,325,450);
+            ob.setTitle("Tic Tac Toe.exe");
+            ob.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        }// calling the main game 
+    }
+}// start page
 
 class tictac extends JFrame implements ActionListener
 {
@@ -36,8 +79,9 @@ class tictac extends JFrame implements ActionListener
     public static boolean player2Won = false;
     int flag=0;
 
-    public tictac()
+    public tictac()// creating default constructor.
     {
+        disable_button();
         c=this.getContentPane();
         c.setLayout(null);
         c.setBackground(Color.WHITE);
@@ -283,25 +327,27 @@ class tictac extends JFrame implements ActionListener
         if(e.getSource()==b0)
         {
             clear();
-            enable_button();
+            disable_button();
+            start.setEnabled(true);
             flag=0;
             player1Turn = true;
             player2Turn = false;
             player1Won = false;
             player2Won = false;
             l3.setText("");
-        }
+        }// lets play again
 
         if(e.getSource()==start)
         {
             l3.setText(""+t1.getText()+"'s Turn !");
             start.setEnabled(false);
-        }
+            enable_button();
+        }// start button
 
         if(flag == 9)
         {
             draw();
-        }
+        }// to check draw case
     }// end of action performed.
 
     public void checkforwin()
@@ -480,7 +526,7 @@ class tictac extends JFrame implements ActionListener
                 }
             }
         }// end of case 8 of win
-    }
+    }// end of check for win
 
     public void clear()
     {
@@ -496,7 +542,7 @@ class tictac extends JFrame implements ActionListener
         t1.setText("");
         t2.setText("");
         l3.setText("");
-    }
+    }// all text fields cleared
 
     public void disable_button()
     {
@@ -509,7 +555,7 @@ class tictac extends JFrame implements ActionListener
         b7.setEnabled(false);
         b8.setEnabled(false);
         b9.setEnabled(false);
-    }
+    }// buttons are disabled
 
     public void enable_button()
     {
@@ -522,24 +568,23 @@ class tictac extends JFrame implements ActionListener
         b7.setEnabled(true);
         b8.setEnabled(true);
         b9.setEnabled(true);
-        start.setEnabled(true);
-    }
+    }// buttons are enabled
 
     public void draw()
     {
         disable_button();
         l3.setText("****DRAW****");
-    }
+    }// if draw
 
 }// class tictac
 
 class tictactoe{
     public static void main(String args[])
     {
-        tictac ob= new tictac();
+        tictacstartpage ob= new tictacstartpage();
         ob.setVisible(true);
 		ob.setBounds(100,100,325,450);
 		ob.setTitle("Tic Tac Toe.exe");
         ob.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }// end of main
-}// end of class
+}// end of main class
