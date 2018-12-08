@@ -9,5 +9,6 @@ set path=C:\Program Files\Java\jdk1.8.0_171\bin and hit Enter.
 * to run the program 
 * java filename
 >After you run the code you will see this on the screen.
-* ![](images/Example1.png)
-![](images/Example.png)
+* ![](images/Example.png)
+![](images/Example1.png)
+![](images/Example2.png)
