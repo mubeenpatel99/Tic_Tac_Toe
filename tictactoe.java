@@ -56,7 +56,7 @@ class tictacstartpage extends JFrame implements ActionListener{
 class tictac extends JFrame implements ActionListener
 {
     Container c;
-    JButton b0=new JButton("Play Again.");
+    JButton playagain=new JButton("Play Again.");
     JButton b1=new JButton("");
     JButton b2=new JButton("");
     JButton b3=new JButton("");
@@ -66,17 +66,24 @@ class tictac extends JFrame implements ActionListener
     JButton b7=new JButton("");
     JButton b8=new JButton("");
     JButton b9=new JButton("");
+    JButton reset=new JButton("Reset");
     JButton start=new JButton("Start");
     JLabel l1=new JLabel("Player 1 (X): ");
     JLabel l2=new JLabel("Player 2 (O): ");
     JTextField t1=new JTextField();
     JTextField t2=new JTextField();
+    JLabel l6=new JLabel("");
+    JLabel l7=new JLabel("");
     JLabel l3=new JLabel("");
+    JLabel l4=new JLabel("");
+    JLabel l5=new JLabel("");
 
     public static boolean player1Turn = true;
     public static boolean player2Turn = false;
     public static boolean player1Won = false;
     public static boolean player2Won = false;
+    int count_player_1=0;
+    int count_player_2=0;
     int flag=0;
 
     public tictac()// creating default constructor.
@@ -87,9 +94,13 @@ class tictac extends JFrame implements ActionListener
         c.setBackground(Color.WHITE);
 
         /* give the position to the buttons */
+        l4.setBounds(50,00,100,20);// temp count history of player 1
+        l5.setBounds(85,20,30,20);// display count
         l3.setBounds(50,110,100,25);
         t1.setBounds(175,50,100,25);
         t2.setBounds(175,75,100,25);
+        l6.setBounds(175,00,100,20);// temp count history of player 2
+        l7.setBounds(215,20,30,20);// display count
         l1.setBounds(50,50,100,25);
         l2.setBounds(50,75,100,25);
         b1.setBounds(50,150,50,50);
@@ -101,8 +112,9 @@ class tictac extends JFrame implements ActionListener
         b7.setBounds(50,250,50,50);
         b8.setBounds(125,250,50,50);
         b9.setBounds(200,250,50,50);
-        b0.setBounds(100,315,100,50);
+        playagain.setBounds(50,315,100,50);
         start.setBounds(175,110,100,25);
+        reset.setBounds(160,315,90,50);
 
         b1.addActionListener(this);
         b2.addActionListener(this);
@@ -113,8 +125,9 @@ class tictac extends JFrame implements ActionListener
         b7.addActionListener(this);
         b8.addActionListener(this);
         b9.addActionListener(this);
-        b0.addActionListener(this);
+        playagain.addActionListener(this);
         start.addActionListener(this);
+        reset.addActionListener(this);
 
         /* adding buttons to container */
 
@@ -131,9 +144,14 @@ class tictac extends JFrame implements ActionListener
         c.add(l2);
         c.add(t1);
         c.add(t2);
-        c.add(b0);
+        c.add(playagain);
         c.add(l3);
         c.add(start);
+        c.add(reset);
+        c.add(l4);
+        c.add(l5);
+        c.add(l6);
+        c.add(l7);
 
         Cursor cur=new Cursor(Cursor.HAND_CURSOR);
 
@@ -146,7 +164,7 @@ class tictac extends JFrame implements ActionListener
         b7.setCursor(cur);
         b8.setCursor(cur);
         b9.setCursor(cur);
-        b0.setCursor(cur);
+        playagain.setCursor(cur);
         start.setCursor(cur);
 
     }// constructor
@@ -324,17 +342,21 @@ class tictac extends JFrame implements ActionListener
             }
         } // button 9
 
-        if(e.getSource()==b0)
+        if(e.getSource()==playagain)
         {
             clear();
             disable_button();
-            start.setEnabled(true);
             flag=0;
             player1Turn = true;
             player2Turn = false;
             player1Won = false;
             player2Won = false;
             l3.setText("");
+            l3.setText(""+t1.getText()+"'s Turn !");
+            start.setEnabled(false);
+            enable_button();
+            l4.setText(""+t1.getText()+"'s Score:");
+            l6.setText(""+t2.getText()+"'s Score:");
         }// lets play again
 
         if(e.getSource()==start)
@@ -342,7 +364,30 @@ class tictac extends JFrame implements ActionListener
             l3.setText(""+t1.getText()+"'s Turn !");
             start.setEnabled(false);
             enable_button();
+            l4.setText(""+t1.getText()+"'s Score:");
+            l6.setText(""+t2.getText()+"'s Score:");
         }// start button
+
+        if(e.getSource()==reset)
+        {
+            clear();
+            t1.setText("");
+            t2.setText("");
+            disable_button();
+            start.setEnabled(true);
+            flag=0;
+            count_player_1=0;
+            count_player_2=0;
+            player1Turn = true;
+            player2Turn = false;
+            player1Won = false;
+            player2Won = false;
+            l3.setText("");
+            l4.setText("");
+            l5.setText("");
+            l6.setText("");
+            l7.setText("");
+        }
 
         if(flag == 9)
         {
@@ -356,9 +401,11 @@ class tictac extends JFrame implements ActionListener
             if(b4.getText().equals("X")){
                 if(b7.getText().equals("X")){
                     player1Won =true;
-                    player2Won =false;
+                    player2Won = false;
                     l3.setText(""+t1.getText()+" Won !");
                     disable_button();
+                    count_player_1++; 
+                    l5.setText(String.valueOf(count_player_1));
                 }
             }
         }// end of case 1 of win
@@ -370,6 +417,8 @@ class tictac extends JFrame implements ActionListener
                     player2Won = false;
                     l3.setText(""+t1.getText()+" Won !");
                     disable_button();
+                    count_player_1++; 
+                    l5.setText(String.valueOf(count_player_1));
                 }
             }
         }// end of case 2 of win
@@ -381,6 +430,8 @@ class tictac extends JFrame implements ActionListener
                     player2Won = false;
                     l3.setText(""+t1.getText()+" Won !"); 
                     disable_button();
+                    count_player_1++; 
+                    l5.setText(String.valueOf(count_player_1));
                 }
             }
         }// end of case 3 of win
@@ -392,6 +443,8 @@ class tictac extends JFrame implements ActionListener
                     player2Won = false;
                     l3.setText(""+t1.getText()+" Won !");
                     disable_button();
+                    count_player_1++; 
+                    l5.setText(String.valueOf(count_player_1));
                 }
             }
         }// end of case 4 of win
@@ -403,6 +456,8 @@ class tictac extends JFrame implements ActionListener
                     player2Won = false;
                     l3.setText(""+t1.getText()+" Won !");
                     disable_button();
+                    count_player_1++; 
+                    l5.setText(String.valueOf(count_player_1));
                 }
             }
         }// end of case 5 of win
@@ -414,6 +469,8 @@ class tictac extends JFrame implements ActionListener
                     player2Won = false;
                     l3.setText(""+t1.getText()+" Won !");
                     disable_button();
+                    count_player_1++; 
+                    l5.setText(String.valueOf(count_player_1));
                 }
             }
         }// end of case 6 of win
@@ -425,6 +482,8 @@ class tictac extends JFrame implements ActionListener
                     player2Won = false;
                     l3.setText(""+t1.getText()+" Won !");
                     disable_button();
+                    count_player_1++; 
+                    l5.setText(String.valueOf(count_player_1));
                 }
             }
         }// end of case 6 of win
@@ -436,6 +495,8 @@ class tictac extends JFrame implements ActionListener
                     player2Won = false;
                     l3.setText(""+t1.getText()+" Won !");
                     disable_button();
+                    count_player_1++; 
+                    l5.setText(String.valueOf(count_player_1));
                 }
             }
         }// end of case 8 of win
@@ -443,9 +504,11 @@ class tictac extends JFrame implements ActionListener
             if(b4.getText().equals("O")){
                 if(b7.getText().equals("O")){
                     player1Won =true;
-                    player2Won =false;
+                    player2Won = false;
                     l3.setText(""+t2.getText()+" Won !");
                     disable_button();
+                    count_player_2++; 
+                    l7.setText(String.valueOf(count_player_2));
                 }
             }
         }// end of case 1 of win
@@ -457,6 +520,8 @@ class tictac extends JFrame implements ActionListener
                     player2Won = true;
                     l3.setText(""+t2.getText()+" Won !");
                     disable_button();
+                    count_player_2++; 
+                    l7.setText(String.valueOf(count_player_2));
                 }
             }
         }// end of case 2 of win
@@ -468,6 +533,8 @@ class tictac extends JFrame implements ActionListener
                     player2Won = true;
                     l3.setText(""+t2.getText()+" Won !");
                     disable_button();
+                    count_player_2++; 
+                    l7.setText(String.valueOf(count_player_2));
                 }
             }
         }// end of case 3 of win
@@ -479,6 +546,8 @@ class tictac extends JFrame implements ActionListener
                     player2Won = true;
                     l3.setText(""+t2.getText()+" Won !");
                     disable_button();
+                    count_player_2++; 
+                    l7.setText(String.valueOf(count_player_2));
                 }
             }
         }// end of case 4 of win
@@ -490,6 +559,8 @@ class tictac extends JFrame implements ActionListener
                     player2Won = true;
                     l3.setText(""+t2.getText()+" Won !");
                     disable_button();
+                    count_player_2++; 
+                    l7.setText(String.valueOf(count_player_2));
                 }
             }
         }// end of case 5 of win
@@ -501,6 +572,8 @@ class tictac extends JFrame implements ActionListener
                     player2Won = true;
                     l3.setText(""+t2.getText()+" Won !");
                     disable_button();
+                    count_player_2++; 
+                    l7.setText(String.valueOf(count_player_2));
                 }
             }
         }// end of case 6 of win
@@ -512,6 +585,8 @@ class tictac extends JFrame implements ActionListener
                     player2Won = true;
                     l3.setText(""+t2.getText()+" Won !");
                     disable_button();
+                    count_player_2++; 
+                    l7.setText(String.valueOf(count_player_2));
                 }
             }
         }// end of case 6 of win
@@ -523,6 +598,8 @@ class tictac extends JFrame implements ActionListener
                     player2Won = true;
                     l3.setText(""+t2.getText()+" Won !");
                     disable_button();
+                    count_player_2++; 
+                    l7.setText(String.valueOf(count_player_2));
                 }
             }
         }// end of case 8 of win
@@ -539,8 +616,6 @@ class tictac extends JFrame implements ActionListener
         b7.setText("");
         b8.setText("");
         b9.setText("");
-        t1.setText("");
-        t2.setText("");
         l3.setText("");
     }// all text fields cleared
 
@@ -577,6 +652,10 @@ class tictac extends JFrame implements ActionListener
     }// if draw
 
 }// class tictac
+
+                        /**
+                         * Class containing main method.
+                         */
 
 class tictactoe{
     public static void main(String args[])
